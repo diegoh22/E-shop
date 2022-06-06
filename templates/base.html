@@ -29,10 +29,106 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Boutique Ado {% block extra_title %}{% endblock %}</title>
+    <title>E_shop {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
     <header class="container-fluid fixed-top"></header>
+    <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="#" target="_blank">
+        <strong class="blue-text">E_shop</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About E_Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">Free download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free tutorials</a>
+          </li>
+        </ul>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+          <form method="GET" action="">
+              <div class="input-group w-100">
+                  <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
+                  <div class="input-group-append">
+                      <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                          <span class="icon">
+                              <i class="fas fa-search"></i>
+                          </span>
+                      </button>
+                  </div>
+              </div>
+          </form>
+      </div>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> 1 </span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                <li class="list-inline-item dropdown">
+                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <p class="my-0">My Account</p>
+                        </div>
+          <div class="dropdown-menu border-0" aria-labelledby="user-options">
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <a href="" class="dropdown-item">Product Management</a>
+                {% endif %}
+                <a href="" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+            {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+            {% endif %}
+        </div>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
 
     {% if messages %}
         <div class="message-container"></div>
